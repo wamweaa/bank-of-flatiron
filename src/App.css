@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+.header{
+ color: aliceblue;
+  background-color: rgb(76, 76, 185);
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+th,td{
+  border: 1px solid #282c34;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even){
+  background-color: aquamarine;
+}
