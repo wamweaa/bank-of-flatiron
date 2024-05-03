@@ -6,8 +6,10 @@ import Transaction from './components/Transactions';
 import TransactionForm from './components/TransactionsForm';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import SearchBar from './components/SearchBar';
 
 function App() {
+
   const [transactions, setTransactions] = useState([])
   // Fetch Transactions
   useEffect(() => {
@@ -19,10 +21,17 @@ function App() {
   function addTransaction(transaction) {
     setTransactions([...transactions, transaction])
   }
+  //function to handle search
+  const handleSearch = (searchItem) => {
+    const filtered = transactions.filter(transaction =>
+      transaction.description.toLowerCase().includes(searchItem.toLowerCase())
+    );
+    setTransactions(filtered);
+  }
   return (
     <div className="App">
       <Header name={BankData.name} />
-
+      <SearchBar onSearch={handleSearch} />
       <TransactionForm addTransaction={addTransaction} />
       <Transaction transactions={transactions} />
     </div>
